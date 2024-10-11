@@ -7,6 +7,7 @@ Pokemon_data_path = "assets/pokemon.json"
 # images files path
 Images_path = "images"
 
-# sprites files path
-Ansi_path = "assets/colorscripts"
+# results files path
+Large_Ansi_path = "assets/colorscripts/large"
+Small_Ansi_path = "assets/colorscripts/small"
 

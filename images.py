@@ -42,9 +42,9 @@ async def get_pokemon_sprites(session, pokemon_slug, pokemon_id, base_folder, se
                 sprites = pokemon_data.get("sprites", {})
 
                 image_urls = {
-                    "back_default": sprites.get("back_default"),
+                    "back": sprites.get("back_default"),
                     "back_shiny": sprites.get("back_shiny"),
-                    "front_default": sprites.get("front_default"),
+                    "front": sprites.get("front_default"),
                     "front_shiny": sprites.get("front_shiny")
                 }
 
@@ -74,9 +74,9 @@ async def get_form_sprites(session, form_id, base_folder, semaphore):
                 sprites = form_data.get("sprites", {})
 
                 image_urls = {
-                    "back_default": sprites.get("back_default"),
+                    "back": sprites.get("back_default"),
                     "back_shiny": sprites.get("back_shiny"),
-                    "front_default": sprites.get("front_default"),
+                    "front": sprites.get("front_default"),
                     "front_shiny": sprites.get("front_shiny")
                 }
 
