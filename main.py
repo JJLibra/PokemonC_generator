@@ -72,4 +72,6 @@ async def main():
         json.dump(all_pokemon_data, f, ensure_ascii=True, indent=4)
 
 if __name__ == '__main__':
+    print("Creating pokemon data file...")
     asyncio.run(main())
+    print("Pokemon data file created!")
