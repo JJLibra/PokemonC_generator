@@ -5,5 +5,5 @@ Gens = 9
 Pokemon_data_path = "assets/pokemon.json"
 
 # images files path
-Images_path = "images/"
+Images_path = "images"
 
