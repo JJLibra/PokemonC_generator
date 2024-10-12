@@ -20,6 +20,10 @@ class SmallConverter:
     def image(self):
         return self._image
 
+    @image.setter
+    def image(self, value):
+        self._image = value
+
     def crop_to_content(self) -> None:
         """Remove padding around the image. Uses alpha channel to find padding"""
         image_array = np.array(self.image)
@@ -87,14 +91,14 @@ def image_to_ansi(image_path, max_width=80, size_scale=1.0):
         return None
 
     converter = SmallConverter(img)
-    converter.convert_to_rgba()  # Ensure the image is in RGBA format
-    converter.crop_to_content()  # Crop the image to content
+    converter.convert_to_rgba()
+    converter.crop_to_content()
 
     width, height = converter.image.size
     aspect_ratio = height / width
     new_width = int(max_width * size_scale)  # Scale the width based on the size_scale parameter
     new_height = int(aspect_ratio * new_width)
-    img = converter.image.resize((new_width, new_height))
+    converter.image = converter.image.resize((new_width, new_height))
 
     ansi_art = converter.convert_image_to_unicode()
 
@@ -122,9 +126,12 @@ if __name__ == '__main__':
         folder_path = os.path.join(base_folder, image_type)
         large_file_path = os.path.join(large_save_folder, image_type)
         small_file_path = os.path.join(small_save_folder, image_type)
-        if not os.path.exists(large_file_path) and not os.path.exists(small_file_path):
+
+        if not os.path.exists(large_file_path):
             os.makedirs(large_file_path)
+        if not os.path.exists(small_file_path):
             os.makedirs(small_file_path)
+
         if os.path.exists(folder_path):
             process_folder(folder_path, large_file_path, size_scale=1.0)  # Larger scale
             process_folder(folder_path, small_file_path, size_scale=0.5)  # Smaller scale
